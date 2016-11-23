@@ -40,3 +40,17 @@ class HomePageViewTest(TestCase):
         response = self.client.get(reverse('bookstore:home'))
         self.assertEqual(response.status_code, 200)
 
+    def test_home_view_search_by_book_title(self):
+        search_query = 'harry'
+        response = self.client.get('{}?q={}'.format(reverse('bookstore:home'), search_query))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['books'].count(), 1)
+        self.assertEqual(response.context['books'].first(), self.book1)
+
+        search_query = 'the'
+        response = self.client.get('{}?q={}'.format(reverse('bookstore:home'), search_query))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['books'].count(), 2)
+
