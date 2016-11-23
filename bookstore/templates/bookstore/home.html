@@ -39,9 +39,9 @@
                         <li>
                             <p class="book_title">{{ book.title }}</p>
                             <p class="book_author">by {{ book.author }}</p>
-                            <p class="book_category">{{ book.category }}</p>
-                            <p class="book_description">{{ book.description }}</p>
-                            <p>Is this hardcover: {{ book.is_hardcover }}</p>
+                            <p class="book_category">Category: {{ book.category }}</p>
+                            <p class="book_description">Description: {{ book.description }}</p>
+                            <p>Is this hardcover: {{ book.is_hardcover|yesno|title }}</p>
                             <hr>
                         </li>
                     {% empty %}
