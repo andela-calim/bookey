@@ -25,7 +25,7 @@ class HomePageView(View):
         elif c:
             category = get_object_or_404(Category, pk=c)
             books = books.filter(category=category)
-            search_query = c
+            search_query = category
 
         context = {
             'books': books,
