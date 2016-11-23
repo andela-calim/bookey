@@ -5,6 +5,9 @@ from ..models import Category, Book
 
 # Create your tests here.
 class CategoryModelTest(TestCase):
+    """
+    Test for Category Model
+    """
     def setUp(self):
         self.category = Category.objects.create(name="Fiction")
 
@@ -13,6 +16,9 @@ class CategoryModelTest(TestCase):
 
 
 class BookModelTest(TestCase):
+    """
+    Test for Book Model
+    """
     def setUp(self):
         self.adventure_category = Category.objects.create(name="Adventure")
         self.fiction_category = Category.objects.create(name="Fiction")
@@ -27,10 +33,13 @@ class BookModelTest(TestCase):
         self.assertIsInstance(self.book, Book)
 
     def test_title_field_is_required(self):
-        self.book = Book()
-        self.book.title = None
-        self.book.author = "Aubrey Alim"
-        self.book.category = self.adventure_category
+        self.book1 = Book()
+        self.book1.title = None
+        self.book1.author = "Aubrey Alim"
+        self.book1.category = self.adventure_category
 
         with self.assertRaises(IntegrityError):
-            self.book.save()
+            self.book1.save()
+
+    def test_hardcover_defaults_to_False(self):
+        self.assertEqual(self.book.is_hardcover, False)
