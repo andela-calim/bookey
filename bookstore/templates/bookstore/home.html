@@ -1,5 +1,42 @@
 {% extends 'base.html' %}
 
 {% block main %}
- <h3>Hi There</h3>
+    <div>
+
+        <form method="get">
+            <input type="text", name="q" placeholder="Search for book...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div>
+        <h3>Categories</h3>
+        <ul>
+            <h4>All Categories</h4>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'bookstore:home' %}">{{ category.name }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <p>{{ book.title }}</p>
+                    <p>{{ book.author }}</p>
+                    <p>{{ book.category }}</p>
+                    <p>{{ book.description }}</p>
+                    <p>{{ book.is_hardcover }}</p>
+                </li>
+            {% empty %}
+                <li>
+                    <p>No result for {{ search_query }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
 {% endblock %}
