@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container main">
+
+        <form method="get">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <input type="text", name="q" placeholder="Search for book..." autofocus>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-4" data-spy="affix" data-offset-top="1" data-offset-bottom="1" data-offset-left="10">
+                <h3 class="list-group-item">Categories</h3>
+                <ul class="list-group">
+                    <h4 class="list-group-item"><a href="{% url 'bookstore:home' %}">All Books</a></h4>
+                    {% for category in categories %}
+                        <li class="list-group-item">
+                            <a href="{% url 'bookstore:home' %}?c={{ category.pk }}">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="col-sm-8">
+                <h3 class="list-group-item main_content">Books</h3>
+                <ul>
+                    {% for book in books %}
+                        <li>
+                            <p class="book_title">{{ book.title }}</p>
+                            <p class="book_author">by {{ book.author }}</p>
+                            <p class="book_category">Category: {{ book.category }}</p>
+                            <p class="book_description">Description: {{ book.description }}</p>
+                            <p>Is this hardcover: {{ book.is_hardcover|yesno|title }}</p>
+                            <hr>
+                        </li>
+                    {% empty %}
+                        <li>
+                            <p>No result for {{ search_query }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
