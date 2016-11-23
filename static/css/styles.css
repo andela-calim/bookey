@@ -1,3 +1,28 @@
 body {
     font-family: 'Lato', sans-serif;
 }
+
+.logo {
+    color: #EEE;
+}
+
+.main {
+    margin-top: 100px;
+}
+
+.main_content {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.book_title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+li {
+    list-style: none;
+}
