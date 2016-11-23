@@ -7,11 +7,23 @@ body {
 }
 
 .main {
-    margin-top: 100px;
+    margin-top: 125px;
 }
 
 .main_content {
-    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.book_content {
+    margin-bottom: 5px;
+}
+
+.sub-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.sub-title > span {
+    font-style: italic;
 }
 
 .list-group-item {
