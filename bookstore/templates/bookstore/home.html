@@ -14,9 +14,10 @@
         <ul>
             <h4>All Categories</h4>
             {% for category in categories %}
-            <li>
-                <a href="{% url 'bookstore:home' %}">{{ category.name }}</a>
-            </li>
+                <li>
+                    <a href="{% url 'bookstore:home' %}">{{ category.name }}</a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 
@@ -37,6 +38,4 @@
             {% endfor %}
         </ul>
     </div>
-
-
 {% endblock %}
