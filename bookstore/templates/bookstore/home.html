@@ -8,19 +8,19 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <div class="row">
                         <div class="col-sm-9">
-                            <input type="text", name="q" placeholder="Search for book..." autofocus>
+                            <input class="form-control" text", name="q" placeholder="Search for book..." autofocus>
                         </div>
                         <div class="col-sm-3">
-                            <button type="submit">Search</button>
+                            <button class="form-control btn-primary" type="submit">Search</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
-        <div class="row">
+        <div class="row main_content">
             <div class="col-sm-4" data-spy="affix" data-offset-top="1" data-offset-bottom="1" data-offset-left="10">
-                <h3 class="list-group-item">Categories</h3>
+                <h2 class="list-group-item">Categories</h2>
                 <ul class="list-group">
                     <h4 class="list-group-item"><a href="{% url 'bookstore:home' %}">All Books</a></h4>
                     {% for category in categories %}
@@ -32,8 +32,13 @@
             </div>
 
 
-            <div class="col-sm-8">
-                <h3 class="list-group-item main_content">Books</h3>
+            <div class="col-sm-8 pull-right">
+                {% if search_query %}
+                    <h2 class="list-group-item book_content">Search results</h2>
+                    <p class="list-group-item sub-title">Showing results for <span>{{ search_query }}</span></p>
+                {% else %}
+                    <h2 class="list-group-item book_content">Showing All Books</h2>
+                {% endif %}
                 <ul>
                     {% for book in books %}
                         <li>
@@ -46,7 +51,7 @@
                         </li>
                     {% empty %}
                         <li>
-                            <p>No result for {{ search_query }}</p>
+                            <p>No result for {{ search_query }}.</p>
                         </li>
                     {% endfor %}
                 </ul>
